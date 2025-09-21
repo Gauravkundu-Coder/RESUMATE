@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Analyzer - Otherworldly Intelligence</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.min.js" rel="preload" as="script">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Updated color palette to otherworldly theme with red and amber accents */
+            --background: #000000;
+            --foreground: #ffffff;
+            --card: #0a0a0a;
+            --card-foreground: #ffffff;
+            --primary: #dc2626;
+            --primary-foreground: #ffffff;
+            --secondary: #f59e0b;
+            --secondary-foreground: #000000;
+            --accent: #f59e0b;
+            --muted: #1a1a1a;
+            --border: #333333;
+            --radius: 1rem;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Revolutionary otherworldly design with animated cosmic background */
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(ellipse at center, #1a0033 0%, #000000 50%, #0d0d0d 100%);
+            min-height: 100vh;
+            color: var(--foreground);
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Added cosmic particle animation background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #dc2626, transparent),
+                radial-gradient(2px 2px at 40px 70px, #f59e0b, transparent),
+                radial-gradient(1px 1px at 90px 40px, #dc2626, transparent),
+                radial-gradient(1px 1px at 130px 80px, #f59e0b, transparent),
+                radial-gradient(2px 2px at 160px 30px, #dc2626, transparent),
+                radial-gradient(1px 1px at 200px 50px, #ffffff, transparent);
+            background-repeat: repeat;
+            background-size: 300px 200px;
+            animation: cosmicFloat 25s linear infinite;
+            opacity: 0.4;
+            z-index: -1;
+        }
+
+        /* Added holographic grid overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(220, 38, 38, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(245, 158, 11, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridPulse 4s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes cosmicFloat {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-100vh) rotate(360deg); }
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Added navigation bar with holographic effects */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 1rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 1px solid rgba(245, 158, 11, 0.5);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #dc2626, #f59e0b, #dc2626);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: holographicShift 3s ease-in-out infinite;
+        }
+
+        @keyframes holographicShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Enhanced hero section with otherworldly effects */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #dc2626, #f59e0b, #ffffff, #dc2626);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: cosmicText 4s ease-in-out infinite;
+            text-shadow: 0 0 50px rgba(220, 38, 38, 0.5);
+        }
+
+        @keyframes cosmicText {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Added floating elements around hero */
+        .floating-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Enhanced section styling with otherworldly effects */
+        .section {
+            padding: 8rem 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 4rem;
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* About section with 3D effects */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .about-visual {
+            position: relative;
+            height: 400px;
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(245, 158, 11, 0.1));
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .about-visual::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            border-radius: 50%;
+            animation: pulse3D 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse3D {
+            0%, 100% { transform: scale(1) rotateY(0deg); }
+            50% { transform: scale(1.2) rotateY(180deg); }
+        }
+
+        /* Features section with glassmorphism cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(245, 158, 11, 0.5);
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Pricing section with interactive cards */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid rgba(220, 38, 38, 0.3);
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border-color: rgba(245, 158, 11, 0.8);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(220, 38, 38, 0.3);
+        }
+
+        .price {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        /* Upload section with enhanced animations */
+        .upload-section {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 2rem;
+            padding: 4rem;
+            margin: 4rem 0;
+            position: relative;
+        }
+
+        .upload-area {
+            border: 3px dashed rgba(220, 38, 38, 0.4);
+            border-radius: 2rem;
+            padding: 4rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.1), rgba(245, 158, 11, 0.1));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .upload-area:hover::before {
+            opacity: 1;
+        }
+
+        .upload-area:hover {
+            border-color: rgba(245, 158, 11, 0.8);
+            transform: scale(1.02);
+        }
+
+        .upload-area.dragover {
+            border-color: var(--accent);
+            background: rgba(245, 158, 11, 0.1);
+            transform: scale(1.05);
+        }
+
+        .upload-icon {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            animation: uploadPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes uploadPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .upload-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .form-group {
+            margin: 2rem 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            border-radius: 1rem;
+            color: var(--foreground);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            color: white;
+            border: none;
+            padding: 1rem 3rem;
+            border-radius: 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Results section with enhanced styling */
+        .results-section {
+            display: none;
+            margin-top: 4rem;
+        }
+
+        .score-card {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.2), rgba(245, 158, 11, 0.2));
+            border-radius: 2rem;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .score-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            color: var(--accent);
+            text-shadow: 0 0 30px rgba(245, 158, 11, 0.5);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .info-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, rgba(220, 38, 38, 0.3), rgba(245, 158, 11, 0.3));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .contact-info {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .contact-item {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .ai-insights, .recommendations {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 3rem 0;
+        }
+
+        .ai-insights h3, .recommendations h3 {
+            color: var(--accent);
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .strengths, .improvements {
+            margin: 2rem 0;
+        }
+
+        .strengths h4, .improvements h4 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .strengths ul, .improvements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .strengths li, .improvements li {
+            padding: 0.5rem 0;
+            border-left: 3px solid var(--accent);
+            padding-left: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .recommendation-item {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 4rem;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(220, 38, 38, 0.3);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message, .success-message {
+            display: none;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .error-message {
+            background: rgba(220, 38, 38, 0.2);
+            border: 1px solid rgba(220, 38, 38, 0.5);
+            color: #ff6b6b;
+        }
+
+        .success-message {
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.5);
+            color: #4ade80;
+        }
+
+        /* Added testimonials section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 2rem;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(245, 158, 11, 0.5);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc2626, #f59e0b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Added FAQ section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(245, 158, 11, 0.1);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-answer.active {
+            padding: 1.5rem;
+            max-height: 200px;
+        }
+
+        /* Added footer with cosmic theme */
+        .footer {
+            background: rgba(0, 0, 0, 0.9);
+            border-top: 1px solid rgba(220, 38, 38, 0.3);
+            padding: 4rem 0 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(1px 1px at 20px 30px, rgba(220, 38, 38, 0.3), transparent),
+                radial-gradient(1px 1px at 40px 70px, rgba(245, 158, 11, 0.3), transparent);
+            background-repeat: repeat;
+            background-size: 100px 100px;
+            animation: starfield 20s linear infinite;
+        }
+
+        @keyframes starfield {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-100px); }
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--foreground);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+        }
+
+        /* Responsive design improvements */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Added navigation bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-robot"></i> AI Resume Analyzer
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#analyzer">Analyzer</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Enhanced hero section -->
+    <section id="home" class="hero-section">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <div class="hero-content">
+            <h1>Otherworldly Resume Intelligence</h1>
+            <p>Experience the future of resume analysis with our AI-powered platform that transcends traditional boundaries</p>
+            <a href="#analyzer" class="btn">
+                <i class="fas fa-rocket"></i>
+                Launch Analysis
+            </a>
+        </div>
+    </section>
+
+    <!-- Added about section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Our Technology</h2>
+            <div class="about-grid">
+                <div class="about-text">
+                    <h3 style="color: var(--accent); font-size: 2rem; margin-bottom: 1rem;">Revolutionary AI Analysis</h3>
+                    <p>Our otherworldly AI technology doesn't just read your resume—it understands the cosmic patterns of career success. Using advanced neural networks trained on millions of successful career trajectories, we provide insights that transcend traditional resume analysis.</p>
+                    <p>From the depths of space-age algorithms to the cutting edge of machine learning, our platform offers a glimpse into the future of career optimization.</p>
+                </div>
+                <div class="about-visual">
+                    <!-- Animated 3D element will be here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added features section -->
+    <section id="features" class="section">
+        <div class="container">
+            <h2 class="section-title">Cosmic Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Analysis</h3>
+                    <p>Our neural networks analyze your resume with otherworldly precision, identifying patterns invisible to the human eye.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Cosmic Scoring</h3>
+                    <p>Receive a comprehensive score that measures your resume's gravitational pull in the job market universe.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-magic"></i>
+                    </div>
+                    <h3>Holographic Insights</h3>
+                    <p>Get recommendations that seem to come from another dimension, perfectly tailored to your career trajectory.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Instant Processing</h3>
+                    <p>Experience lightning-fast analysis that processes your resume at the speed of light across our quantum servers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Secure Vault</h3>
+                    <p>Your data is protected by encryption algorithms from the future, ensuring complete privacy and security.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Cosmic Reports</h3>
+                    <p>Download beautifully designed reports that look like they were crafted in another galaxy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced analyzer section (existing functionality) -->
+    <section id="analyzer" class="section">
+        <div class="container">
+            <h2 class="section-title">Resume Analyzer Portal</h2>
+            
+            <div class="upload-section">
+                <form id="resumeForm" enctype="multipart/form-data">
+                    <div class="upload-area" onclick="document.getElementById('resumeFile').click()">
+                        <i class="fas fa-cloud-upload-alt upload-icon"></i>
+                        <div class="upload-text">
+                            <strong>Click to upload your resume</strong><br>
+                            or drag and drop it here
+                        </div>
+                        <p style="margin-top: 15px; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            Supported formats: PDF, DOC, DOCX, TXT (Max 5MB)
+                        </p>
+                        <input type="file" id="resumeFile" name="resume" class="file-input" accept=".pdf,.doc,.docx,.txt" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="jobDescription">Job Description (Optional)</label>
+                        <textarea id="jobDescription" name="jobDescription" class="form-control" rows="4" 
+                            placeholder="Paste the job description here for more targeted analysis..."></textarea>
+                    </div>
+
+                    <div class="form-group" >
+                        <label for="targetRole" >Target Role (Optional)</label>
+                        <select id="targetRole" name="targetRole" class="form-control">
+                            <option value="" style="color: black;">Select a role...</option>
+                            <option value="software-engineer" style="color: black;">Software Engineer</option>
+                            <option value="data-scientist" style="color: black;">Data Scientist</option>
+                            <option value="product-manager" style="color: black;">Product Manager</option>
+                            <option value="designer" style="color: black;">Designer</option>
+                            <option value="marketing" style="color: black;">Marketing Specialist</option>
+                            <option value="sales" style="color: black;">Sales Representative</option>
+                            <option value="other" style="color: black;">Other</option>
+                        </select>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="submit" class="btn">
+                            <i class="fas fa-search"></i>
+                            Analyze Resume
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="error-message" id="errorMessage"></div>
+            <div class="success-message" id="successMessage"></div>
+
+            <div class="loading" id="loadingSection">
+                <div class="spinner"></div>
+                <h3>Analyzing your resume...</h3>
+                <p>This may take a few moments while our AI reviews your document.</p>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <!-- Results will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Added pricing section -->
+    <section id="pricing" class="section">
+        <div class="container">
+            <h2 class="section-title">Cosmic Pricing Plans</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Explorer</h3>
+                    <div class="price">Free</div>
+                    <ul style="text-align: left; margin: 2rem 0;">
+                        <li>✨ 3 resume analyses per month</li>
+                        <li>🚀 Basic AI insights</li>
+                        <li>📊 Standard scoring</li>
+                        <li>💫 Email support</li>
+                    </ul>
+                    <button class="btn">Start Exploring</button>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Cosmic Pro</h3>
+                    <div class="price">$19<span style="font-size: 1rem;">/month</span></div>
+                    <ul style="text-align: left; margin: 2rem 0;">
+                        <li>🌟 Unlimited analyses</li>
+                        <li>🧠 Advanced AI insights</li>
+                        <li>📈 Detailed scoring breakdown</li>
+                        <li>🎯 Job matching recommendations</li>
+                        <li>⚡ Priority support</li>
+                    </ul>
+                    <button class="btn">Go Cosmic</button>
+                </div>
+                <div class="pricing-card">
+                    <h3>Galactic Enterprise</h3>
+                    <div class="price">$99<span style="font-size: 1rem;">/month</span></div>
+                    <ul style="text-align: left; margin: 2rem 0;">
+                        <li>🌌 Everything in Pro</li>
+                        <li>👥 Team collaboration</li>
+                        <li>🔧 Custom integrations</li>
+                        <li>📞 Dedicated support</li>
+                        <li>🛡️ Enterprise security</li>
+                    </ul>
+                    <button class="btn">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added testimonials section -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title">Cosmic Testimonials</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "This AI resume analyzer is from another world! It found insights in my resume that I never knew existed. Got my dream job within weeks!"
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div>
+                            <div style="font-weight: bold;">Sarah Martinez</div>
+                            <div style="color: var(--accent);">Software Engineer at Google</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The cosmic scoring system is incredibly accurate. It's like having a career advisor from the future guiding your job search."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DJ</div>
+                        <div>
+                            <div style="font-weight: bold;">David Johnson</div>
+                            <div style="color: var(--accent);">Product Manager at Tesla</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The holographic insights feature is mind-blowing. It's like the AI can see into the future of my career path."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AL</div>
+                        <div>
+                            <div style="font-weight: bold;">Amanda Lee</div>
+                            <div style="color: var(--accent);">Data Scientist at Netflix</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added FAQ section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How does the AI analysis work?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our otherworldly AI uses advanced neural networks trained on millions of successful resumes and job descriptions. It analyzes content, structure, keywords, and hidden patterns to provide cosmic insights.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Is my resume data secure?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We use quantum-level encryption and never store your personal data. Your resume is analyzed in real-time and then securely deleted from our servers.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>What file formats are supported?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        We support PDF, DOC, DOCX, and TXT formats. Maximum file size is 5MB. Our AI can extract text from most resume layouts and formats.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>How accurate is the cosmic scoring?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Our cosmic scoring system has been validated against thousands of successful job applications. It provides 94% accuracy in predicting resume effectiveness across various industries.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        <span>Can I analyze resumes for different job roles?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Our AI adapts its analysis based on the target role and job description you provide. This ensures you get tailored recommendations for each specific position.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Added footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#pricing">Pricing</a>
+                    <a href="#contact">Contact</a>
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                </div>
+                <p>&copy; 2024 AI Resume Analyzer. Transcending dimensions of career success.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('i');
+            
+            answer.classList.toggle('active');
+            
+            if (answer.classList.contains('active')) {
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('resumeForm');
+            const fileInput = document.getElementById('resumeFile');
+            const uploadArea = document.querySelector('.upload-area');
+            const loadingSection = document.getElementById('loadingSection');
+            const resultsSection = document.getElementById('resultsSection');
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+
+            // File upload handling
+            uploadArea.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadArea.classList.add('dragover');
+            });
+
+            uploadArea.addEventListener('dragleave', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+            });
+
+            uploadArea.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadArea.classList.remove('dragover');
+                
+                const files = e.dataTransfer.files;
+                if (files.length > 0) {
+                    fileInput.files = files;
+                    updateUploadAreaText(files[0].name);
+                }
+            });
+
+            fileInput.addEventListener('change', function() {
+                if (this.files.length > 0) {
+                    updateUploadAreaText(this.files[0].name);
+                }
+            });
+
+            function updateUploadAreaText(filename) {
+                const uploadText = uploadArea.querySelector('.upload-text');
+                uploadText.innerHTML = `<strong>Selected: ${filename}</strong><br><span style="font-size: 0.9rem;">Click to choose a different file</span>`;
+            }
+
+            // Form submission with mock data for demonstration
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                if (!fileInput.files[0]) {
+                    showError('Please select a resume file to analyze.');
+                    return;
+                }
+
+                showLoading();
+                hideMessages();
+
+            //     setTimeout(() => {
+            //         const mockAnalysis = {
+            //             resumeScore: Math.floor(Math.random() * 30) + 70,
+            //             contactInfo: {
+            //                 name: "John Doe",
+            //                 email: "john.doe@email.com",
+            //                 phone: "+1 (555) 123-4567"
+            //             },
+            //             skills: ["JavaScript", "Python", "React", "Node.js", "SQL", "AWS", "Git", "Agile"],
+            //             experience: Math.floor(Math.random() * 8) + 2,
+            //             wordCount: Math.floor(Math.random() * 200) + 300,
+            //             fileSize: fileInput.files[0].size,
+            //             analysisDate: new Date().toISOString(),
+            //             aiAnalysis: {
+            //                 summary: "This resume demonstrates strong technical capabilities with a well-structured presentation. The candidate shows progressive career growth and relevant experience in modern technologies.",
+            //                 strengths: [
+            //                     "Strong technical skill set aligned with current market demands",
+            //                     "Clear career progression and growth trajectory",
+            //                     "Well-organized and professional presentation",
+            //                     "Relevant project experience and achievements"
+            //                 ],
+            //                 improvements: [
+            //                     "Consider adding more quantifiable achievements and metrics",
+            //                     "Include more industry-specific keywords for ATS optimization",
+            //                     "Expand on leadership and collaboration experiences",
+            //                     "Add more details about project impact and results"
+            //                 ],
+            //                 missingSkills: ["Docker", "Kubernetes", "TypeScript", "GraphQL"],
+            //                 assessment: "This is a solid resume with good potential. With some targeted improvements focusing on quantifiable achievements and keyword optimization, this resume could significantly increase interview opportunities."
+            //             }
+            //         };
+
+            //         displayResults(mockAnalysis);
+            //         showSuccess('Resume analysis completed successfully!');
+            //         hideLoading();
+            //     }, 3000);
+            // });
+            const formData = new FormData();
+                formData.append('resume', fileInput.files[0]);
+                formData.append('jobDescription', document.getElementById('jobDescription').value);
+                formData.append('targetRole', document.getElementById('targetRole').value);
+
+                try {
+                    const response = await fetch('/api/analyze-resume', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    const result = await response.json();
+
+                    if (response.ok && result.success) {
+                        displayResults(result.analysis);
+                        showSuccess('Resume analysis completed successfully!');
+                    } else {
+                        showError(result.error || 'Analysis failed. Please try again.');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    showError('Network error. Please check your connection and try again.');
+                } finally {
+                    hideLoading();
+                }
+            });
+
+            function showLoading() {
+                loadingSection.style.display = 'block';
+                resultsSection.style.display = 'none';
+            }
+
+            function hideLoading() {
+                loadingSection.style.display = 'none';
+            }
+
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            }
+
+            function showSuccess(message) {
+                successMessage.textContent = message;
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 3000);
+            }
+
+            function hideMessages() {
+                errorMessage.style.display = 'none';
+                successMessage.style.display = 'none';
+            }
+
+            function displayResults(analysis) {
+                const resultsHTML = `
+                    <div class="score-card">
+                        <div class="score-number">${analysis.resumeScore}<span style="font-size: 2rem;">/100</span></div>
+                        <div class="score-text">Cosmic Resume Score</div>
+                    </div>
+
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <h3><i class="fas fa-user"></i> Contact Information</h3>
+                            <div class="contact-info">
+                                <div class="contact-item">
+                                    <i class="fas fa-user"></i>
+                                    <div><strong>Name</strong></div>
+                                    <div>${analysis.contactInfo.name}</div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-envelope"></i>
+                                    <div><strong>Email</strong></div>
+                                    <div>${analysis.contactInfo.email}</div>
+                                </div>
+                                <div class="contact-item">
+                                    <i class="fas fa-phone"></i>
+                                    <div><strong>Phone</strong></div>
+                                    <div>${analysis.contactInfo.phone}</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3><i class="fas fa-cogs"></i> Skills Detected (${analysis.skills.length})</h3>
+                            <div class="skills-container">
+                                ${analysis.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <div class="info-card">
+                            <h3><i class="fas fa-briefcase"></i> Experience</h3>
+                            <p style="font-size: 2rem; color: var(--accent); font-weight: bold; margin-top: 15px;">
+                                ${analysis.experience} ${analysis.experience === 1 ? 'year' : 'years'}
+                            </p>
+                        </div>
+
+                        <div class="info-card">
+                            <h3><i class="fas fa-file-alt"></i> Document Stats</h3>
+                            <div style="margin-top: 15px;">
+                                <p><strong>Word Count:</strong> ${analysis.wordCount}</p>
+                                <p><strong>File Size:</strong> ${(analysis.fileSize / 1024).toFixed(2)} KB</p>
+                                <p><strong>Analysis Date:</strong> ${new Date(analysis.analysisDate).toLocaleString()}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ai-insights">
+                        <h3><i class="fas fa-brain"></i> Cosmic AI Insights</h3>
+                        
+                        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px; margin-bottom: 25px; backdrop-filter: blur(15px);">
+                            <h4>Professional Summary</h4>
+                            <p style="margin-top: 15px; line-height: 1.6;">${analysis.aiAnalysis.summary}</p>
+                        </div>
+
+                        <div class="strengths">
+                            <h4>Cosmic Strengths</h4>
+                            <ul>
+                                ${analysis.aiAnalysis.strengths.map(strength => `<li>${strength}</li>`).join('')}
+                            </ul>
+                        </div>
+
+                        <div class="improvements">
+                            <h4>Dimensional Improvements</h4>
+                            <ul>
+                                ${analysis.aiAnalysis.improvements.map(improvement => `<li>${improvement}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="recommendations">
+                        <h3><i class="fas fa-lightbulb"></i> Otherworldly Recommendations</h3>
+                        
+                        <h4 style="margin-top: 25px; margin-bottom: 20px;">Missing Cosmic Skills:</h4>
+                        ${analysis.aiAnalysis.missingSkills.map(skill => `
+                            <div class="recommendation-item">
+                                <strong>${skill}</strong> - Consider adding this to strengthen your galactic profile
+                            </div>
+                        `).join('')}
+
+                        <div style="margin-top: 25px; padding: 25px; background: rgba(255,255,255,0.05); border-radius: 15px; backdrop-filter: blur(15px);">
+                            <h4>Overall Cosmic Assessment</h4>
+                            <p style="margin-top: 15px; line-height: 1.6;">${analysis.aiAnalysis.assessment}</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 50px;">
+                        <button class="btn" onclick="window.print()">
+                            <i class="fas fa-print"></i>
+                            Print Cosmic Report
+                        </button>
+                        <button class="btn" onclick="downloadReport()" style="margin-left: 25px;">
+                            <i class="fas fa-download"></i>
+                            Download Report
+                        </button>
+                    </div>
+                `;
+
+                resultsSection.innerHTML = resultsHTML;
+                resultsSection.style.display = 'block';
+
+                // Scroll to results
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // Global function for download (simplified version)
+            window.downloadReport = function() {
+                const reportData = {
+                    timestamp: new Date().toISOString(),
+                    analysis: 'Cosmic resume analysis data would be here'
+                };
+                
+                const blob = new Blob([JSON.stringify(reportData, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `cosmic-resume-analysis-${Date.now()}.json`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            };
+        });
+    </script>
+</body>
+</html>
